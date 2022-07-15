@@ -13,5 +13,12 @@
 	"langs": {
 		"en": "English",
 		"es": "Spanish"
+	},
+	"footer": {
+		"licenses": "Licences",
+		"openSourceLicenses": "Open Source Licenses",
+		"repository": "Repository",
+		"socialMedia": "Social Media and contact",
+		"sourceCode": "Source Code"
 	}
 }
