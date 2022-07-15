@@ -1,0 +1,13 @@
+{
+	"navBar": {
+		"about": "About",
+		"home": "Home",
+		"language": "Language",
+		"posts": "Posts",
+		"tags": "Tags"
+	},
+	"langs": {
+		"en": "English",
+		"es": "Spanish"
+	}
+}

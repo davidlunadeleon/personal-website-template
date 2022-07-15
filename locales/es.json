@@ -1,0 +1,13 @@
+{
+	"navBar": {
+		"about": "Acerca",
+		"home": "Hogar",
+		"language": "Idioma",
+		"posts": "Publicaciones",
+		"tags": "Etiquetas"
+	},
+	"langs": {
+		"en": "Inglés",
+		"es": "Español"
+	}
+}
