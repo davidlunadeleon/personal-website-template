@@ -3,7 +3,7 @@
 		"about": "About",
 		"home": "Home",
 		"language": "Language",
-		"posts": "Posts",
+		"blog": "Blog",
 		"tags": "Tags"
 	},
 	"themePicker": {
@@ -28,5 +28,12 @@
 		"licenses": "License(s):",
 		"repository": "Repository:",
 		"unspecified": "Unspecified"
+	},
+	"blog": {
+		"posts": "Blog Posts",
+		"date": "Date: ",
+		"by": "By: ",
+		"editedDate": "Last edited: ",
+		"tags": "Tag(s): "
 	}
 }

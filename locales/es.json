@@ -3,7 +3,7 @@
 		"about": "Acerca",
 		"home": "Hogar",
 		"language": "Idioma",
-		"posts": "Publicaciones",
+		"blog": "Blog",
 		"tags": "Etiquetas"
 	},
 	"themePicker": {
@@ -28,5 +28,12 @@
 		"licenses": "Licencia(s):",
 		"repository": "Repositorio:",
 		"unspecified": "No especificado"
+	},
+	"blog": {
+		"posts": "Publicaciones del blog",
+		"date": "Fecha: ",
+		"by": "Por: ",
+		"editedDate": "Última edición: ",
+		"tags": "Etiqueta(s): "
 	}
 }
