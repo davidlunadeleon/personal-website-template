@@ -6,6 +6,10 @@
 		"posts": "Posts",
 		"tags": "Tags"
 	},
+	"themePicker": {
+		"dark": "Dark Mode",
+		"light": "Light mode"
+	},
 	"langs": {
 		"en": "English",
 		"es": "Spanish"

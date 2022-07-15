@@ -6,6 +6,10 @@
 		"posts": "Publicaciones",
 		"tags": "Etiquetas"
 	},
+	"themePicker": {
+		"dark": "Modo oscuro",
+		"light": "Modo claro"
+	},
 	"langs": {
 		"en": "Inglés",
 		"es": "Español"
