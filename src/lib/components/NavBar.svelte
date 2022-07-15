@@ -20,7 +20,7 @@
 	$: {
 		items = [
 			{ href: '/', text: $t('navBar.home') },
-			{ href: '/posts', text: $t('navBar.posts') },
+			{ href: '/blog', text: $t('navBar.blog') },
 			{ href: '/tags', text: $t('navBar.tags') },
 			{ href: '/about', text: $t('navBar.about') }
 		];
