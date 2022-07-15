@@ -1,7 +1,12 @@
 {
 	"name": "personal-website-template",
 	"license": "GPL-3.0",
+	"repository": "https://github.com/davidlunadeleon/personal-website-template",
 	"version": "0.0.1",
+	"author": {
+		"name": "David Luna de León",
+		"url": "https://www.davidlunadeleon.com"
+	},
 	"scripts": {
 		"dev": "vite dev",
 		"build": "npm run licenses:check && vite build",
