@@ -4,11 +4,11 @@
 * information from each, such as tags, title, author information, etc.
 */
 
-const modules = import.meta.glob('./posts/*.svx');
+const modules = import.meta.globEager('./posts/*.svx');
 
 let posts = [];
 for (const path in modules) {
-	const module = await modules[path]();
+	const module = modules[path];
 	posts.push(module);
 }
 
