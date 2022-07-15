@@ -13,15 +13,18 @@
 	} from 'carbon-components-svelte';
 	import { config } from '$lib/config/site';
 	import ThemePicker from '$lib/components/ThemePicker.svelte';
+	import { t, locale, locales } from 'svelte-intl-precompile';
 
 	let isSideNavOpen = true;
-	const items = [
-		{ href: '/', text: 'Home' },
-		{ href: '/posts', text: 'Posts' },
-		{ href: '/tags', text: 'Tags' },
-		{ href: '/about', text: 'About' }
-	];
-	const languages = ['Spanish', 'English'];
+	let items: { href: string; text: string }[] = [];
+	$: {
+		items = [
+			{ href: '/', text: $t('navBar.home') },
+			{ href: '/posts', text: $t('navBar.posts') },
+			{ href: '/tags', text: $t('navBar.tags') },
+			{ href: '/about', text: $t('navBar.about') }
+		];
+	}
 </script>
 
 <Header company={config.name} bind:isSideNavOpen href="/">
@@ -32,9 +35,9 @@
 		{#each items as item}
 			<HeaderNavItem {...item} />
 		{/each}
-		<HeaderNavMenu text="Language">
-			{#each languages as language}
-				<HeaderNavItem text={language} />
+		<HeaderNavMenu text={$t('navBar.language')}>
+			{#each $locales as loc}
+				<HeaderNavItem text={$t(`langs.${loc}`)} on:click={() => ($locale = loc)} />
 			{/each}
 		</HeaderNavMenu>
 		<ThemePicker />
@@ -46,9 +49,9 @@
 		{#each items as item}
 			<SideNavLink {...item} />
 		{/each}
-		<SideNavMenu text="Language">
-			{#each languages as language}
-				<SideNavMenuItem text={language} />
+		<SideNavMenu text={$t('navBar.language')}>
+			{#each $locales as loc}
+				<SideNavMenuItem text={$t(`langs.${loc}`)} on:click={() => ($locale = loc)} />
 			{/each}
 		</SideNavMenu>
 		<ThemePicker />
