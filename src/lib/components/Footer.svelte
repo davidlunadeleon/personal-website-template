@@ -25,9 +25,11 @@
 		<Column>
 			<strong>{$t('footer.socialMedia')}</strong>
 			<UnorderedList>
-				<ListItem>
-					<Link href="/licenses" icon={Code}>{$t('footer.licenses')}</Link>
-				</ListItem>
+				{#each config.socialMedia as account}
+					<ListItem>
+						<Link href={account.link}>{account.description}</Link>
+					</ListItem>
+				{/each}
 			</UnorderedList>
 		</Column>
 	</Row>
