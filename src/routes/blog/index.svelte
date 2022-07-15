@@ -15,7 +15,7 @@
 			<Calendar />
 			{$t('blog.date')}
 			{new Date(post.metadata.publishedDate).toLocaleDateString($locale)}.
-			{#if post.metadata.publishedDate !== post.metadata.updatedDate}
+			{#if post.metadata.publishedDate !== post.metadata.editedDate}
 				{$t('blog.editedDate')}
 				{new Date(post.metadata.editedDate).toLocaleDateString($locale)}.
 			{/if}
