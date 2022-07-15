@@ -20,5 +20,13 @@
 		"repository": "Repository",
 		"socialMedia": "Social Media and contact",
 		"sourceCode": "Source Code"
+	},
+	"licenses": {
+		"openSourceLicenses": "Open Source Licenses",
+		"description": "The following is a list of open source licenses of libraries and projects used to build this site:",
+		"publisher": "Publisher:",
+		"licenses": "License(s):",
+		"repository": "Repository:",
+		"unspecified": "Unspecified"
 	}
 }

@@ -20,5 +20,13 @@
 		"repository": "Repositorio",
 		"socialMedia": "Redes sociales y contacto",
 		"sourceCode": "Código fuente"
+	},
+	"licenses": {
+		"openSourceLicenses": "Licencias de código abierto",
+		"description": "La siguiente lista contiene licencias de código abierto de paquetes y proyectos usados para construir este sitio:",
+		"publisher": "Distribuidor:",
+		"licenses": "Licencia(s):",
+		"repository": "Repositorio:",
+		"unspecified": "No especificado"
 	}
 }
