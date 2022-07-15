@@ -1,0 +1,36 @@
+---
+author: David Luna
+authorURL: https://davidlunadeleon.com
+publishedDate: 2022-07-15
+editedDate: 2022-07-15
+title: {
+	en: Hello,
+	es: Hola
+}
+tags: {
+	en: [test, hello],
+	es: [prueba, hola]
+}
+summary: {
+	en: 'This post is about saying hi.',
+	es: 'Esta publicación es sobre decir hola.'
+}
+---
+
+<script lang='ts'>
+	import { locale } from 'svelte-intl-precompile';
+</script>
+
+{#if $locale === 'en'}
+
+# Hello!
+
+Just saying hi. :)
+
+{:else if $locale === 'es'}
+
+# ¡Hola!
+
+Solo quería decir hola. :)
+
+{/if}

@@ -1,0 +1,36 @@
+---
+author: David Luna
+authorURL: https://davidlunadeleon.com
+publishedDate: 2022-07-15
+editedDate: 2022-07-16
+title: {
+	en: This is a test,
+	es: Esto es una prueba
+}
+tags: {
+	en: [test, post],
+	es: [prueba, publicación]
+}
+summary: {
+	en: 'This post is about tests.',
+	es: 'Esta publicación es sobre pruebas.'
+}
+---
+
+<script lang='ts'>
+	import { locale } from 'svelte-intl-precompile';
+</script>
+
+{#if $locale === 'en'}
+
+# This is a test
+
+This post is a test!
+
+{:else if $locale === 'es'}
+
+# Esto es una prueba
+
+¡Esta publicación es una prueba!
+
+{/if}
