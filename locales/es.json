@@ -35,5 +35,10 @@
 		"by": "Por: ",
 		"editedDate": "Última edición: ",
 		"tags": "Etiqueta(s): "
+	},
+	"tags": {
+		"tags": "{num, plural, one {Etiqueta} other {Etiquetas}}",
+		"description": "La siguiente tabla contiene las etiquetas disponibles en las publicaciones del blog de este sitio: ",
+		"posts": "{num, plural, one {Publicación} other {Publicaciones}}"
 	}
 }
