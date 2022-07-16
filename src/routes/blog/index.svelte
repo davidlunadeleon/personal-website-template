@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { Link, Tag } from 'carbon-components-svelte';
-	import { Calendar } from 'carbon-icons-svelte';
+	import { Link, Button, ClickableTile } from 'carbon-components-svelte';
+	import { Calendar, Tag } from 'carbon-icons-svelte';
 	import { locale, t } from 'svelte-intl-precompile';
 	import { posts } from '$lib/blog/blog';
 </script>
@@ -8,7 +8,9 @@
 <h1>{$t('blog.posts')}</h1>
 {#each posts as post}
 	<hr />
-	<h2>{post.metadata.title[$locale]}</h2>
+	<ClickableTile href={`/blog/${post.metadata.slug[$locale]}`}>
+		<h2>{post.metadata.title[$locale]}</h2>
+	</ClickableTile>
 	<hr />
 	<p>
 		<strong>
@@ -24,7 +26,33 @@
 		</strong>
 	</p>
 	<p>{post.metadata.summary[$locale]}</p>
-	<p><strong>{$t('blog.tags')} {post.metadata.tags[$locale]}</strong></p>
+	<p>
+		<strong>
+			<div class="flex-container">
+				<div>
+					<Tag />
+					{$t('blog.tags')}
+				</div>
+				{#each post.metadata.tags[$locale] as tag}
+					<div class="buttonMargin">
+						<Button href={`/tags/${tag}`} size="small">{tag}</Button>
+					</div>
+				{/each}
+			</div>
+		</strong>
+	</p>
 {/each}
 
-<slot />
+<style>
+	.flex-container {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		align-items: center;
+		align-content: space-between;
+	}
+
+	.buttonMargin {
+		margin: 0.25em 0.25em;
+	}
+</style>
