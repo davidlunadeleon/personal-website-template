@@ -1,8 +1,12 @@
 ---
 author: David Luna
 authorURL: https://davidlunadeleon.com
-publishedDate: 2022-07-15
 editedDate: 2022-07-15
+publishedDate: 2022-07-15
+slug: {
+	en: hello,
+	es: hola,
+}
 title: {
 	en: Hello,
 	es: Hola
