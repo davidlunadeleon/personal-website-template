@@ -3,7 +3,6 @@
 		Header,
 		HeaderNav,
 		HeaderNavItem,
-		HeaderNavMenu,
 		SideNav,
 		SideNavItems,
 		SideNavLink,
@@ -13,6 +12,7 @@
 	} from 'carbon-components-svelte';
 	import { config } from '$lib/config/site';
 	import ThemePicker from '$lib/components/ThemePicker.svelte';
+	import LanguagePicker from './LanguagePicker.svelte';
 	import { t, locale, locales } from 'svelte-intl-precompile';
 
 	let isSideNavOpen = false;
@@ -35,11 +35,7 @@
 		{#each items as item}
 			<HeaderNavItem {...item} />
 		{/each}
-		<HeaderNavMenu text={$t('navBar.language')}>
-			{#each $locales as loc}
-				<HeaderNavItem text={$t(`langs.${loc}`)} on:click={() => ($locale = loc)} />
-			{/each}
-		</HeaderNavMenu>
+		<LanguagePicker />
 		<ThemePicker />
 	</HeaderNav>
 	<SideNav bind:isOpen={isSideNavOpen}>
