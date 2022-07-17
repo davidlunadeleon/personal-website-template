@@ -4,9 +4,12 @@
 	import { tags } from '$lib/blog/blog';
 
 	const numberOfTags = tags[$locale].size;
-	const rows = [...tags[$locale].entries()].map(([tag, posts]) => {
-		return { tag, posts: posts.length, id: tag };
-	});
+	let rows: { tag: string; posts: number; id: string }[] = [];
+	$: {
+		rows = [...tags[$locale].entries()].map(([tag, posts]) => {
+			return { tag, posts: posts.length, id: tag };
+		});
+	}
 	let pageSize = 10;
 	let page = 1;
 </script>
