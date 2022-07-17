@@ -2,7 +2,7 @@
 	import { Row, Column, UnorderedList, ListItem, Link } from 'carbon-components-svelte';
 	import { LogoGithub, Code } from 'carbon-icons-svelte';
 	import { config } from '$lib/config/site';
-	import { t } from 'svelte-intl-precompile';
+	import { t, locale } from 'svelte-intl-precompile';
 </script>
 
 <footer>
@@ -18,7 +18,7 @@
 			<strong>{$t('footer.openSourceLicenses')}</strong>
 			<UnorderedList>
 				<ListItem>
-					<Link href="/licenses" icon={Code}>{$t('footer.licenses')}</Link>
+					<Link href={`/${$locale}/licenses`} icon={Code}>{$t('footer.licenses')}</Link>
 				</ListItem>
 			</UnorderedList>
 		</Column>

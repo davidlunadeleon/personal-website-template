@@ -19,10 +19,10 @@
 	let items: { href: string; text: string }[] = [];
 	$: {
 		items = [
-			{ href: '/', text: $t('navBar.home') },
-			{ href: '/blog', text: $t('navBar.blog') },
-			{ href: '/tags', text: $t('navBar.tags') },
-			{ href: '/', text: $t('navBar.about') }
+			{ href: `/${$locale}`, text: $t('navBar.home') },
+			{ href: `/${$locale}/blog`, text: $t('navBar.blog') },
+			{ href: `/${$locale}/tags`, text: $t('navBar.tags') },
+			{ href: `/${$locale}`, text: $t('navBar.about') }
 		];
 	}
 </script>
