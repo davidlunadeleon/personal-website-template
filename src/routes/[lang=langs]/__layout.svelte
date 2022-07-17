@@ -3,3 +3,5 @@
 	import { locale } from 'svelte-intl-precompile';
 	$locale = $page.params.lang;
 </script>
+
+<slot />
