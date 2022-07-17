@@ -1,6 +1,8 @@
 <script lang="ts">
 	import { UnorderedList, ListItem, Link } from 'carbon-components-svelte';
-	import { t } from 'svelte-intl-precompile';
+	import { t, locale } from 'svelte-intl-precompile';
+	import { hrefConvert } from '$lib/routing';
+
 	export let licenses: {
 		default: {
 			projectName: {
@@ -29,7 +31,7 @@
 				<ListItem>{$t('licenses.licenses')} {description.licenses}</ListItem>
 				<ListItem>
 					{$t('licenses.repository')}
-					<Link href={description.repository}>{description.repository}</Link>
+					<Link href={hrefConvert($locale, description.repository)}>{description.repository}</Link>
 				</ListItem>
 			</UnorderedList>
 		</ListItem>

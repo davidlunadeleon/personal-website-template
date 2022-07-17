@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { DataTable, Pagination, Link } from 'carbon-components-svelte';
+	import { hrefConvert } from '$lib/routing';
 	import { locale, t } from 'svelte-intl-precompile';
 	import { tags } from '$lib/blog/blog';
 
@@ -29,7 +30,7 @@
 >
 	<svelte:fragment slot="cell" let:cell>
 		{#if cell.key === 'tag'}
-			<Link href={`/tags/${cell.value}`}>{cell.value}</Link>
+			<Link href={hrefConvert($locale, `/tags/${cell.value}`)}>{cell.value}</Link>
 		{:else}
 			{cell.value}
 		{/if}

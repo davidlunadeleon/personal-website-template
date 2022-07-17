@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { hrefConvert } from '$lib/routing';
 	import {
 		Header,
 		HeaderNav,
@@ -19,15 +20,20 @@
 	let items: { href: string; text: string }[] = [];
 	$: {
 		items = [
-			{ href: `/${$locale}`, text: $t('navBar.home') },
-			{ href: `/${$locale}/blog`, text: $t('navBar.blog') },
-			{ href: `/${$locale}/tags`, text: $t('navBar.tags') },
-			{ href: `/${$locale}`, text: $t('navBar.about') }
+			{ href: hrefConvert($locale, '/'), text: $t('navBar.home') },
+			{ href: hrefConvert($locale, '/blog'), text: $t('navBar.blog') },
+			{ href: hrefConvert($locale, '/tags'), text: $t('navBar.tags') },
+			{ href: hrefConvert($locale, '/'), text: $t('navBar.about') }
 		];
 	}
 </script>
 
-<Header company={config.name} bind:isSideNavOpen href="/" expandedByDefault={false}>
+<Header
+	company={config.name}
+	bind:isSideNavOpen
+	href={hrefConvert($locale, '/')}
+	expandedByDefault={false}
+>
 	<svelte:fragment slot="skip-to-content">
 		<SkipToContent />
 	</svelte:fragment>

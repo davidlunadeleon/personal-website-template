@@ -1,13 +1,15 @@
 <script lang="ts">
 	import type PostMetadata from '$lib/types/PostMetadata';
-	import { Link, Button, ClickableTile } from 'carbon-components-svelte';
 	import { Calendar, Tag } from 'carbon-icons-svelte';
+	import { Link, Button, ClickableTile } from 'carbon-components-svelte';
+	import { hrefConvert } from '$lib/routing';
 	import { locale, t } from 'svelte-intl-precompile';
+
 	export let postMetadata: PostMetadata;
 </script>
 
 <hr />
-<ClickableTile href={`/blog/${postMetadata.slug[$locale]}`}>
+<ClickableTile href={hrefConvert($locale, `/blog/${postMetadata.slug[$locale]}`)}>
 	<h2>{postMetadata.title[$locale]}</h2>
 </ClickableTile>
 <hr />
@@ -21,7 +23,7 @@
 			{new Date(postMetadata.editedDate).toLocaleDateString($locale)}.
 		{/if}
 		{$t('blog.by')}
-		<Link href={postMetadata.authorURL}>{postMetadata.author}</Link>
+		<Link href={hrefConvert($locale, postMetadata.authorURL)}>{postMetadata.author}</Link>
 	</strong>
 </p>
 <p>{postMetadata.summary[$locale]}</p>
@@ -34,7 +36,7 @@
 			</div>
 			{#each postMetadata.tags[$locale] as tag}
 				<div class="buttonMargin">
-					<Button href={`/tags/${tag}`} size="small">{tag}</Button>
+					<Button href={hrefConvert($locale, `/tags/${tag}`)} size="small">{tag}</Button>
 				</div>
 			{/each}
 		</div>
