@@ -4,6 +4,7 @@
 	import { Link, Button, ClickableTile, Tile } from 'carbon-components-svelte';
 	import { hrefConvert } from '$lib/routing';
 	import { locale, t } from 'svelte-intl-precompile';
+	import { posts } from '$lib/blog';
 
 	export let post: PostMetadata;
 	export let isInList: boolean;
@@ -45,21 +46,23 @@
 {#if isInList}
 	<p>{post.summary}</p>
 {/if}
-<p>
-	<strong>
-		<div class="flex-container">
-			<div>
-				<Tag />
-				{$t('blog.tags')}
-			</div>
-			{#each post.tags as tag}
-				<div class="buttonMargin">
-					<Button href={hrefConvert($locale, `/tags/${tag}/page/0`)} size="small">{tag}</Button>
+{#if posts.tags}
+	<p>
+		<strong>
+			<div class="flex-container">
+				<div>
+					<Tag />
+					{$t('blog.tags')}
 				</div>
-			{/each}
-		</div>
-	</strong>
-</p>
+				{#each post.tags as tag}
+					<div class="buttonMargin">
+						<Button href={hrefConvert($locale, `/tags/${tag}/page/0`)} size="small">{tag}</Button>
+					</div>
+				{/each}
+			</div>
+		</strong>
+	</p>
+{/if}
 {#if !isInList}
 	<hr />
 {/if}

@@ -23,7 +23,7 @@
 			{ href: hrefConvert($locale, '/'), text: $t('navBar.home') },
 			{ href: hrefConvert($locale, '/blog/page/0'), text: $t('navBar.blog') },
 			{ href: hrefConvert($locale, '/tags/page/0'), text: $t('navBar.tags') },
-			{ href: hrefConvert($locale, '/'), text: $t('navBar.about') }
+			{ href: hrefConvert($locale, '/about'), text: $t('navBar.about') }
 		];
 	}
 </script>
