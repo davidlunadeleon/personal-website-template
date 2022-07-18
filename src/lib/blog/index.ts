@@ -4,33 +4,36 @@
  * information from each, such as tags, title, author information, etc.
  */
 
-import type BlogPosts from '$lib/types/BlogPosts';
-import type PostMetadata from '$lib/types/PostMetadata';
 import type TagsPosts from '$lib/types/TagsPosts';
+import type { BlogPost, BlogPosts } from '$lib/types/BlogPosts';
 
-const modules = import.meta.globEager('./posts/*.svx');
+const modules = import.meta.globEager('./posts/**/*.svx');
 
 let posts: BlogPosts = {};
 let tags: TagsPosts = {};
 for (const path in modules) {
 	const module = modules[path];
-	const metadata = module.metadata as PostMetadata;
+	let [postLanguage, postDir] = path.split('/').reverse();
+	postLanguage = postLanguage.slice(0, postLanguage.indexOf('.'));
+	let post = { ...module.metada, default: module.default } as BlogPost;
 
-	// posts.push(module as BlogPost);
-	Object.entries(metadata.tags).map(([lang, tagsInPost]) => {
-		tagsInPost.forEach((tag) => {
-			if (tags[lang]) {
-				if (tags[lang].has(tag)) {
-					// Add ?. operator to avoid warnings. But the check is in place
-					tags[lang].get(tag)?.push(metadata);
-				} else {
-					tags[lang].set(tag, [metadata]);
-				}
+	post.tags.forEach((tag) => {
+		if (tags[postLanguage]) {
+			if (tags[postLanguage].has(tag)) {
+				tags[postLanguage].get(tag)?.push(post);
 			} else {
-				tags[lang] = new Map([[tag, [metadata]]]);
+				tags[postLanguage].set(tag, [post]);
 			}
-		});
+		} else {
+			tags[postLanguage] = new Map([[tag, [post]]]);
+		}
 	});
+
+	if (posts[postLanguage]) {
+		posts[postLanguage].set(postDir, post);
+	} else {
+		posts[postLanguage] = new Map([[postDir, post]]);
+	}
 }
 
 export { posts, tags };

@@ -1,6 +1,7 @@
-import type PostMetadata from './PostMetadata';
+import type { BlogPost } from './BlogPosts';
 
 export default interface TagsPosts {
-	// Language as key
-	[key: string]: Map<string, PostMetadata[]>;
+	// Language as object property.
+	// Map key is the tag itself.
+	[key: string]: Map<string, BlogPost[]>;
 }
