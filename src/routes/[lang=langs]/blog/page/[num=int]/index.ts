@@ -1,5 +1,5 @@
 import type { RequestEvent, RequestHandlerOutput } from '@sveltejs/kit/types';
-import { posts } from '$lib/blog/blog';
+import { posts } from '$lib/blog';
 
 export function get({ params }: RequestEvent): RequestHandlerOutput {
 	const page = parseInt(params.num, 10);

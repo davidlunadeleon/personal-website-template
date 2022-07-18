@@ -4,19 +4,19 @@
  * information from each, such as tags, title, author information, etc.
  */
 
-import type BlogPost from '$lib/types/BlogPost';
-import type TagsPosts from '$lib/types/TagsPosts';
+import type BlogPosts from '$lib/types/BlogPosts';
 import type PostMetadata from '$lib/types/PostMetadata';
+import type TagsPosts from '$lib/types/TagsPosts';
 
 const modules = import.meta.globEager('./posts/*.svx');
 
-let posts: BlogPost[] = [];
+let posts: BlogPosts = {};
 let tags: TagsPosts = {};
 for (const path in modules) {
 	const module = modules[path];
 	const metadata = module.metadata as PostMetadata;
 
-	posts.push(module as BlogPost);
+	// posts.push(module as BlogPost);
 	Object.entries(metadata.tags).map(([lang, tagsInPost]) => {
 		tagsInPost.forEach((tag) => {
 			if (tags[lang]) {
