@@ -8,19 +8,11 @@ export function get({ params }: RequestEvent): RequestHandlerOutput {
 	const pageSize = 10;
 	const allLangTags = tags[lang];
 
-	if (isNaN(page) || page < 0) {
+	if (isNaN(page) || page < 0 || page >= allLangTags.size / pageSize) {
 		return {
-			status: 302,
-			headers: { location: `/${lang}/tags/page/0` }
+			status: 404
 		};
 	}
-	if (page >= allLangTags.size / pageSize) {
-		return {
-			status: 302,
-			headers: { location: `/${lang}/tags/page/${Math.floor((allLangTags.size - 1) / pageSize)}` }
-		};
-	}
-
 	const langTags = [...allLangTags.entries()]
 		.map(([tag, posts]) => {
 			return { tag, numPosts: posts.length, id: tag };
