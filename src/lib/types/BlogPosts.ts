@@ -1,15 +1,8 @@
+import type PostMetadata from './PostMetadata';
+
 export interface BlogPost {
-	author?: string;
-	authorURL?: string;
+	metadata: PostMetadata;
 	default: { render: CallableFunction; $$render: CallableFunction };
-	editDate?: Date;
-	publishDate?: Date;
-	slug: string;
-	summary: string;
-	tags: string[];
-	title: string;
-	translator?: string;
-	translatorURL?: string;
 }
 
 export interface BlogPosts {

@@ -17,7 +17,7 @@ for (const path in modules) {
 	postLanguage = postLanguage.slice(0, postLanguage.indexOf('.'));
 	let post = { ...module.metada, default: module.default } as BlogPost;
 
-	post.tags.forEach((tag) => {
+	post.metadata.tags.forEach((tag) => {
 		if (tags[postLanguage]) {
 			if (tags[postLanguage].has(tag)) {
 				tags[postLanguage].get(tag)?.push(post);
