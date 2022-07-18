@@ -1,8 +1,8 @@
 import type { RequestEvent, RequestHandlerOutput } from '@sveltejs/kit/types';
 import { tags } from '$lib/blog/blog';
 
-export function get({ params, url }: RequestEvent): RequestHandlerOutput {
-	const page = Math.max(parseInt(url.searchParams.get('page') ?? '0', 10), 0);
+export function get({ params }: RequestEvent): RequestHandlerOutput {
+	const page = Math.max(parseInt(params.num, 10), 0);
 	const { lang } = params;
 
 	const pageSize = 10;

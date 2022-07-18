@@ -22,7 +22,7 @@
 		items = [
 			{ href: hrefConvert($locale, '/'), text: $t('navBar.home') },
 			{ href: hrefConvert($locale, '/blog'), text: $t('navBar.blog') },
-			{ href: hrefConvert($locale, '/tags'), text: $t('navBar.tags') },
+			{ href: hrefConvert($locale, '/tags/page/0'), text: $t('navBar.tags') },
 			{ href: hrefConvert($locale, '/'), text: $t('navBar.about') }
 		];
 	}

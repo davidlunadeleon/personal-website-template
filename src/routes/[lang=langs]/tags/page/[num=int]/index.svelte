@@ -12,12 +12,12 @@
 	let currPage: number;
 	let reportedPage: number;
 	$: {
-		currPage = parseInt($page.url.searchParams.get('page') ?? '0', 10) || 0;
+		currPage = Math.max(parseInt($page.params.num, 10) || 0);
 		reportedPage = currPage + 1;
 	}
 
 	function paginate(isForward: boolean) {
-		const url = `/tags?page=${isForward ? currPage + 1 : currPage - 1}`;
+		const url = `/tags/page/${isForward ? currPage + 1 : currPage - 1}`;
 		goto(hrefConvert($locale, url));
 	}
 </script>
