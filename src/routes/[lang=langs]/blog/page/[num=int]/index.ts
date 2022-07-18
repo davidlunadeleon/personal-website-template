@@ -1,5 +1,6 @@
 import type { RequestEvent, RequestHandlerOutput } from '@sveltejs/kit/types';
 import { posts } from '$lib/blog';
+import { sortBlogPosts } from '$lib/types/PostMetadata';
 
 export function get({ params }: RequestEvent): RequestHandlerOutput {
 	const page = parseInt(params.num, 10);
@@ -17,17 +18,7 @@ export function get({ params }: RequestEvent): RequestHandlerOutput {
 		.map((post) => {
 			return { ...post.metadata };
 		})
-		.sort(({ publishDate: pd1, title: t1 }, { publishDate: pd2, title: t2 }) => {
-			if (pd1 && pd2) {
-				return pd1.getTime() - pd2.getTime();
-			} else if (pd1) {
-				return 1;
-			} else if (pd2) {
-				return -1;
-			} else {
-				return t2.localeCompare(t1);
-			}
-		})
+		.sort(sortBlogPosts)
 		.splice(page * pageSize, pageSize);
 	const numPages = Math.ceil(langPosts.length / pageSize);
 
