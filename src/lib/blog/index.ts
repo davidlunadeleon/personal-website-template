@@ -15,7 +15,7 @@ for (const path in modules) {
 	const module = modules[path];
 	let [postLanguage, postDir] = path.split('/').reverse();
 	postLanguage = postLanguage.slice(0, postLanguage.indexOf('.'));
-	let post = { ...module.metada, default: module.default } as BlogPost;
+	let post = { metadata: module.metadata, default: module.default } as BlogPost;
 
 	post.metadata.tags.forEach((tag) => {
 		if (tags[postLanguage]) {

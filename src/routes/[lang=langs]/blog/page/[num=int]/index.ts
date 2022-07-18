@@ -7,13 +7,13 @@ export function get({ params }: RequestEvent): RequestHandlerOutput {
 
 	const pageSize = 10;
 
-	if (isNaN(page) || page < 0 || page >= posts.length / pageSize) {
+	if (isNaN(page) || page < 0 || page >= posts[lang].size / pageSize) {
 		return {
 			status: 404
 		};
 	}
 
-	const langPosts = posts.map((post) => {
+	const langPosts = [...posts[lang].values()].map((post) => {
 		return { ...post.metadata };
 	});
 

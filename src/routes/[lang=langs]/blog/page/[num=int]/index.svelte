@@ -8,5 +8,5 @@
 
 <h1>{$t('blog.posts')}</h1>
 {#each posts as post}
-	<PostTile postMetadata={post} />
+	<PostTile {post} />
 {/each}

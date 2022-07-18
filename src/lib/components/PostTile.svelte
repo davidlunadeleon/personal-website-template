@@ -5,28 +5,36 @@
 	import { hrefConvert } from '$lib/routing';
 	import { locale, t } from 'svelte-intl-precompile';
 
-	export let postMetadata: PostMetadata;
+	export let post: PostMetadata;
 </script>
 
 <hr />
-<ClickableTile href={hrefConvert($locale, `/blog/${postMetadata.slug[$locale]}`)}>
-	<h2>{postMetadata.title[$locale]}</h2>
+<ClickableTile href={hrefConvert($locale, `/blog/${post.slug}`)}>
+	<h2>{post.title}</h2>
 </ClickableTile>
 <hr />
-<p>
-	<strong>
-		<Calendar />
-		{$t('blog.date')}
-		{new Date(postMetadata.publishedDate).toLocaleDateString($locale)}.
-		{#if postMetadata.publishedDate !== postMetadata.editedDate}
-			{$t('blog.editedDate')}
-			{new Date(postMetadata.editedDate).toLocaleDateString($locale)}.
-		{/if}
-		{$t('blog.by')}
-		<Link href={hrefConvert($locale, postMetadata.authorURL)}>{postMetadata.author}</Link>
-	</strong>
-</p>
-<p>{postMetadata.summary[$locale]}</p>
+{#if post.publishDate}
+	<p>
+		<strong>
+			<Calendar />
+			{$t('blog.date')}
+			{new Date(post.publishDate).toLocaleDateString($locale)}.
+			{#if post.editDate && post.publishDate !== post.editDate}
+				{$t('blog.editedDate')}
+				{new Date(post.editDate).toLocaleDateString($locale)}.
+			{/if}
+			{$t('blog.by')}
+			{#if post.author}
+				{#if post.authorURL}
+					<Link href={hrefConvert($locale, post.authorURL)}>{post.author}</Link>
+				{:else}
+					<Link>{post.author}</Link>
+				{/if}
+			{/if}
+		</strong>
+	</p>
+{/if}
+<p>{post.summary}</p>
 <p>
 	<strong>
 		<div class="flex-container">
@@ -34,7 +42,7 @@
 				<Tag />
 				{$t('blog.tags')}
 			</div>
-			{#each postMetadata.tags[$locale] as tag}
+			{#each post.tags as tag}
 				<div class="buttonMargin">
 					<Button href={hrefConvert($locale, `/tags/${tag}`)} size="small">{tag}</Button>
 				</div>
