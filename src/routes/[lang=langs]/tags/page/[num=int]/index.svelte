@@ -6,6 +6,7 @@
 	import { locale, t } from 'svelte-intl-precompile';
 	import { page } from '$app/stores';
 
+	export let numPages: number;
 	export let numTags: number;
 	export let pageSize: number;
 	export let tags: { tag: string; numPosts: number; id: string }[];
@@ -13,7 +14,7 @@
 	let currPage: number;
 	let reportedPage: number;
 	$: {
-		currPage = Math.max(parseInt($page.params.num, 10) || 0);
+		currPage = parseInt($page.params.num, 10);
 		reportedPage = currPage + 1;
 	}
 
@@ -37,43 +38,36 @@
 >
 	<svelte:fragment slot="cell" let:cell>
 		{#if cell.key === 'tag'}
-			<Link href={hrefConvert($locale, `/tags/${cell.value}`)}>{cell.value}</Link>
+			<Link href={hrefConvert($locale, `/tags/${cell.value}/page/0`)}>{cell.value}</Link>
 		{:else}
 			{cell.value}
 		{/if}
 	</svelte:fragment>
 </DataTable>
 <Pagination
-	bind:pageSize
+	backwardText={$t('pagination.previous')}
 	bind:page={reportedPage}
-	totalItems={numTags}
-	pageSizeInputDisabled
+	bind:pageSize
+	forwardText={$t('pagination.next')}
 	on:click:button--next={() => goto(paginate(true))}
 	on:click:button--previous={() => goto(paginate(false))}
+	pageInputDisabled
+	pageSizeInputDisabled
+	totalItems={numTags}
 />
 <noscript class="flex-container">
 	<div class="buttonMargin">
 		{#if currPage > 0}
 			<Button icon={ArrowLeft} href={paginate(false)} iconDescription={$t('pagination.previous')} />
 		{:else}
-			<Button
-				icon={ArrowLeft}
-				href={paginate(false)}
-				iconDescription={$t('pagination.previous')}
-				disabled
-			/>
+			<Button icon={ArrowLeft} iconDescription={$t('pagination.previous')} disabled />
 		{/if}
 	</div>
 	<div class="buttonMargin">
-		{#if currPage < Math.floor(numTags / pageSize) - 1}
+		{#if reportedPage < numPages}
 			<Button icon={ArrowRight} href={paginate(true)} iconDescription={$t('pagination.next')} />
 		{:else}
-			<Button
-				icon={ArrowRight}
-				href={paginate(true)}
-				iconDescription={$t('pagination.next')}
-				disabled
-			/>
+			<Button icon={ArrowRight} iconDescription={$t('pagination.next')} disabled />
 		{/if}
 	</div>
 </noscript>
@@ -82,14 +76,13 @@
 	.flex-container {
 		width: 100%;
 		display: flex;
-		flex-direction: row;
-		flex-wrap: wrap;
+		flex-flow: row wrap;
 		align-items: center;
 		justify-content: center;
 		align-content: space-between;
 	}
 
 	.buttonMargin {
-		margin: 0.25em 0.25em;
+		margin: 0.25em;
 	}
 </style>

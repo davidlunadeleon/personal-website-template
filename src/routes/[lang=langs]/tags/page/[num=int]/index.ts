@@ -19,13 +19,15 @@ export function get({ params }: RequestEvent): RequestHandlerOutput {
 		})
 		.sort(({ numPosts: n1 }, { numPosts: n2 }) => n2 - n1)
 		.splice(page * pageSize, pageSize);
+	const numPages = Math.ceil(allLangTags.size / pageSize);
 
 	return {
 		status: 200,
 		body: {
 			tags: langTags,
 			numTags: allLangTags.size,
-			pageSize
+			pageSize,
+			numPages
 		}
 	};
 }

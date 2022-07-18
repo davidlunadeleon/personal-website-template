@@ -44,7 +44,7 @@
 			</div>
 			{#each post.tags as tag}
 				<div class="buttonMargin">
-					<Button href={hrefConvert($locale, `/tags/${tag}`)} size="small">{tag}</Button>
+					<Button href={hrefConvert($locale, `/tags/${tag}/page/0`)} size="small">{tag}</Button>
 				</div>
 			{/each}
 		</div>

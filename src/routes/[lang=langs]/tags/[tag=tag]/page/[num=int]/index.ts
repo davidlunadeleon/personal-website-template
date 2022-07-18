@@ -1,19 +1,26 @@
 import type { RequestEvent, RequestHandlerOutput } from '@sveltejs/kit/types';
-import { posts } from '$lib/blog';
+import { tags } from '$lib/blog';
 
 export function get({ params }: RequestEvent): RequestHandlerOutput {
 	const page = parseInt(params.num, 10);
-	const { lang } = params;
+	const { lang, tag } = params;
 
 	const pageSize = 10;
+	const langTag = tags[lang].get(tag);
 
-	if (isNaN(page) || page < 0 || page >= posts[lang].size / pageSize) {
+	if (!langTag) {
 		return {
 			status: 404
 		};
 	}
 
-	const langPosts = [...posts[lang].values()]
+	if (isNaN(page) || page < 0 || page >= langTag.length / pageSize) {
+		return {
+			status: 404
+		};
+	}
+
+	const langPosts = langTag
 		.map((post) => {
 			return { ...post.metadata };
 		})
