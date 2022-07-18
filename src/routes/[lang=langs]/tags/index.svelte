@@ -1,32 +1,38 @@
 <script lang="ts">
 	import { DataTable, Pagination, Link } from 'carbon-components-svelte';
+	import { goto } from '$app/navigation';
 	import { hrefConvert } from '$lib/routing';
 	import { locale, t } from 'svelte-intl-precompile';
-	import { tags } from '$lib/blog/blog';
+	import { page } from '$app/stores';
 
-	const numberOfTags = tags[$locale].size;
-	let rows: { tag: string; posts: number; id: string }[] = [];
+	export let numTags: number;
+	export let pageSize: number;
+	export let tags: { tag: string; numPosts: number; id: string }[];
+
+	let currPage: number;
+	let reportedPage: number;
 	$: {
-		rows = [...tags[$locale].entries()].map(([tag, posts]) => {
-			return { tag, posts: posts.length, id: tag };
-		});
+		currPage = parseInt($page.url.searchParams.get('page') ?? '0', 10) || 0;
+		reportedPage = currPage + 1;
 	}
-	let pageSize = 10;
-	let page = 1;
+
+	function paginate(isForward: boolean) {
+		const url = `/tags?page=${isForward ? currPage + 1 : currPage - 1}`;
+		goto(hrefConvert($locale, url));
+	}
 </script>
 
 <h1>{$t('tags.tags')}</h1>
 <p>{$t('tags.description')}</p>
 <DataTable
-	sortable
 	title={$t('tags.tags')}
 	headers={[
 		{ key: 'tag', value: $t('tags.tags') },
-		{ key: 'posts', value: $t('tags.posts') }
+		{ key: 'numPosts', value: $t('tags.posts') }
 	]}
-	{rows}
+	rows={tags}
 	{pageSize}
-	{page}
+	page={1}
 >
 	<svelte:fragment slot="cell" let:cell>
 		{#if cell.key === 'tag'}
@@ -36,4 +42,11 @@
 		{/if}
 	</svelte:fragment>
 </DataTable>
-<Pagination bind:pageSize bind:page totalItems={numberOfTags} pageSizeInputDisabled />
+<Pagination
+	bind:pageSize
+	bind:page={reportedPage}
+	totalItems={numTags}
+	pageSizeInputDisabled
+	on:click:button--next={() => paginate(true)}
+	on:click:button--previous={() => paginate(false)}
+/>
