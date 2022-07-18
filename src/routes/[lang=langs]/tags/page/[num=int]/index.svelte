@@ -1,5 +1,6 @@
 <script lang="ts">
-	import { DataTable, Pagination, Link } from 'carbon-components-svelte';
+	import { DataTable, Pagination, Link, Button } from 'carbon-components-svelte';
+	import { ArrowLeft, ArrowRight } from 'carbon-icons-svelte';
 	import { goto } from '$app/navigation';
 	import { hrefConvert } from '$lib/routing';
 	import { locale, t } from 'svelte-intl-precompile';
@@ -18,7 +19,7 @@
 
 	function paginate(isForward: boolean) {
 		const url = `/tags/page/${isForward ? currPage + 1 : currPage - 1}`;
-		goto(hrefConvert($locale, url));
+		return hrefConvert($locale, url);
 	}
 </script>
 
@@ -47,6 +48,48 @@
 	bind:page={reportedPage}
 	totalItems={numTags}
 	pageSizeInputDisabled
-	on:click:button--next={() => paginate(true)}
-	on:click:button--previous={() => paginate(false)}
+	on:click:button--next={() => goto(paginate(true))}
+	on:click:button--previous={() => goto(paginate(false))}
 />
+<noscript class="flex-container">
+	<div class="buttonMargin">
+		{#if currPage > 0}
+			<Button icon={ArrowLeft} href={paginate(false)} iconDescription={$t('pagination.previous')} />
+		{:else}
+			<Button
+				icon={ArrowLeft}
+				href={paginate(false)}
+				iconDescription={$t('pagination.previous')}
+				disabled
+			/>
+		{/if}
+	</div>
+	<div class="buttonMargin">
+		{#if currPage < Math.floor(numTags / pageSize) - 1}
+			<Button icon={ArrowRight} href={paginate(true)} iconDescription={$t('pagination.next')} />
+		{:else}
+			<Button
+				icon={ArrowRight}
+				href={paginate(true)}
+				iconDescription={$t('pagination.next')}
+				disabled
+			/>
+		{/if}
+	</div>
+</noscript>
+
+<style>
+	.flex-container {
+		width: 100%;
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: center;
+		align-content: space-between;
+	}
+
+	.buttonMargin {
+		margin: 0.25em 0.25em;
+	}
+</style>

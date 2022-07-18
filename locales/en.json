@@ -40,5 +40,9 @@
 		"tags": "{num, plural, one {Tag} other {Tags}}",
 		"description": "The following is a table of available tags used in this site's blog posts: ",
 		"posts": "{num, plural, one {Post} other {Posts}}"
+	},
+	"pagination": {
+		"next": "Next page",
+		"previous": "Previous page"
 	}
 }
