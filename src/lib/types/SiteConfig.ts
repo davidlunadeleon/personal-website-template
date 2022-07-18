@@ -1,10 +1,10 @@
 interface SocialMedia {
-	link: string,
-	description: string
+	link: string;
+	description: string;
 }
 
 export interface SiteConfig {
-	name: string,
-	sourceRepository: string,
-	socialMedia: SocialMedia[]
+	name: string;
+	sourceRepository: string;
+	socialMedia: SocialMedia[];
 }
