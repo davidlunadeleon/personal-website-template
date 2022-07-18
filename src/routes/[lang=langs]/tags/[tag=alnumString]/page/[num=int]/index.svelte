@@ -7,9 +7,16 @@
 
 	export let numPages: number;
 	export let posts: PostMetadata[];
+
+	let title: string;
+	$: title = `${$t('tags.tags', { values: { num: 1 } })}: ${$page.params.tag}`;
 </script>
 
-<h1>{$t('tags.tags', { values: { num: 1 } })}: {$page.params.tag}</h1>
+<svelte:head>
+	<title>{title}</title>
+</svelte:head>
+
+<h1>{title}</h1>
 {#each posts as post}
 	<PostTile {post} isInList={true} />
 {/each}

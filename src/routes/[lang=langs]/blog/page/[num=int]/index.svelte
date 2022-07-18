@@ -6,9 +6,16 @@
 
 	export let numPages: number;
 	export let posts: PostMetadata[];
+
+	let title: string;
+	$: title = $t('blog.posts');
 </script>
 
-<h1>{$t('blog.posts')}</h1>
+<svelte:head>
+	<title>{title}</title>
+</svelte:head>
+
+<h1>{title}</h1>
 {#each posts as post}
 	<PostTile {post} isInList={true} />
 {/each}

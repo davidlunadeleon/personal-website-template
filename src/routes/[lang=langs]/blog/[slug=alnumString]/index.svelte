@@ -25,7 +25,14 @@
 	import type { BlogPost } from '$lib/types/BlogPosts';
 
 	export let post: BlogPost;
+
+	let title: string;
+	$: title = post.metadata.title;
 </script>
+
+<svelte:head>
+	<title>{title}</title>
+</svelte:head>
 
 <PostTile post={post.metadata} isInList={false} />
 <svelte:component this={post.default} />

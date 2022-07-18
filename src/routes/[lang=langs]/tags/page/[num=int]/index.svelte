@@ -22,9 +22,16 @@
 		const url = `/tags/page/${isForward ? currPage + 1 : currPage - 1}`;
 		return hrefConvert($locale, url);
 	}
+
+	let title: string;
+	$: title = $t('tags.tags');
 </script>
 
-<h1>{$t('tags.tags')}</h1>
+<svelte:head>
+	<title>{title}</title>
+</svelte:head>
+
+<h1>{title}</h1>
 <p>{$t('tags.description')}</p>
 <DataTable
 	title={$t('tags.tags')}
