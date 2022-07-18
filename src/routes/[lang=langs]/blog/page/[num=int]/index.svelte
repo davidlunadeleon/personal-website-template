@@ -10,6 +10,6 @@
 
 <h1>{$t('blog.posts')}</h1>
 {#each posts as post}
-	<PostTile {post} />
+	<PostTile {post} isInList={true} />
 {/each}
 <PostListPagination {numPages} resource="blog" />

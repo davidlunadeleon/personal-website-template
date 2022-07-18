@@ -1,9 +1,8 @@
 ---
 author: David Luna
 authorURL: https://davidlunadeleon.com
-editedDate: 2022-07-16
-publishedDate: 2022-07-15
-slug: prueba
+editDate: 2022-07-16
+publishDate: 2022-07-15
 title: Esto es una prueba
 tags: [prueba, publicación]
 summary: Esta publicación es sobre pruebas.

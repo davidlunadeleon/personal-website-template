@@ -11,6 +11,6 @@
 
 <h1>{$t('tags.tags', { values: { num: 1 } })}: {$page.params.tag}</h1>
 {#each posts as post}
-	<PostTile {post} />
+	<PostTile {post} isInList={true} />
 {/each}
 <PostListPagination {numPages} resource="tags" />

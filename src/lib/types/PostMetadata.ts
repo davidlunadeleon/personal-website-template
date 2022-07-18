@@ -1,6 +1,6 @@
 export default interface PostMetadata {
-	editDate?: Date;
-	publishDate?: Date;
+	editDate?: Date | string;
+	publishDate?: Date | string;
 	slug: string;
 	summary: string;
 	tags: string[];

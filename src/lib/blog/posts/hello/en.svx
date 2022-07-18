@@ -1,9 +1,8 @@
 ---
 author: David Luna
 authorURL: https://davidlunadeleon.com
-editedDate: 2022-07-15
-publishedDate: 2022-07-15
-slug: hello
+editDate: 2022-07-15
+publishDate: 2022-07-15
 title: Hello
 tags: [test, hello]
 summary: 'This post is about saying hi.'

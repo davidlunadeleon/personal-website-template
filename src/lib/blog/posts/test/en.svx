@@ -1,9 +1,8 @@
 ---
 author: David Luna
 authorURL: https://davidlunadeleon.com
-editedDate: 2022-07-16
-publishedDate: 2022-07-15
-slug: test
+editDate: 2022-07-16
+publishDate: 2022-07-15
 title: This is a test
 tags: [test, post]
 summary: This post is about tests.

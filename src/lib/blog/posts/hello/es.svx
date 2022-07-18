@@ -1,9 +1,8 @@
 ---
 author: David Luna
 authorURL: https://davidlunadeleon.com
-editedDate: 2022-07-15
-publishedDate: 2022-07-15
-slug: hola
+editDate: 2022-07-15
+publishDate: 2022-07-15
 title: hola
 tags: [prueba, hola]
 summary: 'Esta publicación es sobre decir hola.'

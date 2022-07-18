@@ -14,8 +14,15 @@ let tags: TagsPosts = {};
 for (const path in modules) {
 	const module = modules[path];
 	let [postLanguage, postDir] = path.split('/').reverse();
+	module.metadata.slug = postDir;
+	if (module.metadata.publishDate) {
+		module.metadata.publishDate = new Date(module.metadata.publishDate);
+	}
+	if (module.metadata.editDate) {
+		module.metadata.editDate = new Date(module.metadata.editDate);
+	}
 	postLanguage = postLanguage.slice(0, postLanguage.indexOf('.'));
-	let post = { metadata: module.metadata, default: module.default } as BlogPost;
+	let post = module as BlogPost;
 
 	post.metadata.tags.forEach((tag) => {
 		if (tags[postLanguage]) {
