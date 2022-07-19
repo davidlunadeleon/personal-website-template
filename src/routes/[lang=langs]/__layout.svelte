@@ -14,9 +14,19 @@
 	<Grid>
 		<Row>
 			<Column>
-				<slot />
+				<div class="content">
+					<slot />
+				</div>
 			</Column>
 		</Row>
 		<Footer />
 	</Grid>
 </Content>
+
+<style>
+	.content {
+		margin: 0 auto;
+		max-width: 1250px;
+		padding-bottom: 2rem;
+	}
+</style>
