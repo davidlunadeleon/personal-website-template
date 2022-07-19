@@ -34,15 +34,21 @@
 		"date": "Fecha: ",
 		"by": "Por: ",
 		"editedDate": "Última edición: ",
-		"tags": "Etiqueta(s): "
+		"tags": "Etiqueta(s): ",
+		"postNotFound": "Publicación del blog no encontrada."
 	},
 	"tags": {
 		"tags": "{num, plural, one {Etiqueta} other {Etiquetas}}",
 		"description": "La siguiente tabla contiene las etiquetas disponibles en las publicaciones del blog de este sitio: ",
-		"posts": "{num, plural, one {Publicación} other {Publicaciones}}"
+		"posts": "{num, plural, one {Publicación} other {Publicaciones}}",
+		"tagNotFound": "Etiqueta no encontrada."
 	},
 	"pagination": {
 		"next": "Siguiente página",
 		"previous": "Página anterior"
+	},
+	"error": {
+		"404": "Error 404",
+		"unknown": "Error desconocido"
 	}
 }
