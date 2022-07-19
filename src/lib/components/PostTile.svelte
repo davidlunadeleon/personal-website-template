@@ -46,7 +46,7 @@
 {#if isInList}
 	<p>{post.summary}</p>
 {/if}
-{#if posts.tags}
+{#if post.tags}
 	<p>
 		<strong>
 			<div class="flex-container">
