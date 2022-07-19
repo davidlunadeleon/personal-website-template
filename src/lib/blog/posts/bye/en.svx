@@ -7,6 +7,10 @@ tags: [test, bye, goodbye]
 summary: 'This post is about saying goodbye.'
 ---
 
+<script lang="ts">
+	import { UnorderedList, OrderedList, ListItem } from 'carbon-components-svelte';
+</script>
+
 # Goodbye 
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
@@ -14,3 +18,26 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 ## Another goodbye
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+<UnorderedList>
+	<ListItem>ListItem 1</ListItem>
+	<ListItem>ListItem 1</ListItem>
+	<ListItem>ListItem 1</ListItem>
+	<UnorderedList nested>
+		<ListItem>ListItem 1</ListItem>
+		<ListItem>ListItem 1</ListItem>
+		<ListItem>ListItem 1</ListItem>
+	</UnorderedList>
+</UnorderedList>
+
+### A code section
+
+```cpp
+int main() {
+	return 1;
+}
+```
+
+## Links
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum: [archlinux.org](https://www.archlinux.org).

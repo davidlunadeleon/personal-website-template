@@ -29,4 +29,19 @@
 		max-width: 1250px;
 		padding-bottom: 2rem;
 	}
+
+	:global(p) {
+		padding: 0.5rem;
+	}
+	:global(li) {
+		padding: 0.2rem;
+	}
+	:global(pre) {
+		padding: 1rem;
+	}
+	@media screen and (min-width: 1250px) {
+		:global(html) {
+			font-size: 1.2rem;
+		}
+	}
 </style>
