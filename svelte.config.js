@@ -7,7 +7,13 @@ import { mdsvex } from 'mdsvex';
 const config = {
 	// Consult https://github.com/sveltejs/svelte-preprocess
 	// for more information about preprocessors
-	preprocess: [preprocess(), optimizeImports(), mdsvex()],
+	preprocess: [
+		preprocess(),
+		optimizeImports(),
+		mdsvex({
+			layout: './src/lib/layouts/default.svelte'
+		})
+	],
 	extensions: ['.svelte', '.svx'],
 	kit: {
 		adapter: adapter(),
