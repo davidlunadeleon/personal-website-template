@@ -50,5 +50,8 @@
 	"error": {
 		"404": "Error 404",
 		"unknown": "Error desconocido"
+	},
+	"home": {
+		"latestPosts": "Últimas publicaciones del blog:"
 	}
 }

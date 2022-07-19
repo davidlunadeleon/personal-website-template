@@ -1,5 +1,9 @@
 <script lang="ts">
+	import PostTile from '$lib/components/PostTile.svelte';
+	import type PostMetadata from '$lib/types/PostMetadata';
 	import { t } from 'svelte-intl-precompile';
+
+	export let posts: PostMetadata[];
 
 	let title: string;
 	$: title = $t('navBar.home');
@@ -9,5 +13,7 @@
 	<title>{title}</title>
 </svelte:head>
 
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<h1>{$t('home.latestPosts')}</h1>
+{#each posts as post}
+	<PostTile {post} isInList={true} />
+{/each}

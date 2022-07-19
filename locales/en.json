@@ -50,5 +50,8 @@
 	"error": {
 		"404": "Error 404",
 		"unknown": "Unknown error"
+	},
+	"home": {
+		"latestPosts": "Latest blog posts:"
 	}
 }
