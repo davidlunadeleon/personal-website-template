@@ -3,7 +3,7 @@
 	import { Row, Column, UnorderedList, ListItem, Link } from 'carbon-components-svelte';
 	import { config } from '$lib/config/site';
 	import { hrefConvert } from '$lib/routing';
-	import { t, locale } from 'svelte-intl-precompile';
+	import { t, locale, locales } from 'svelte-intl-precompile';
 </script>
 
 <footer>
@@ -23,6 +23,14 @@
 				<ListItem>
 					<Link href={hrefConvert($locale, '/licenses')} icon={Code}>{$t('footer.licenses')}</Link>
 				</ListItem>
+			</UnorderedList>
+			<strong>{$t('footer.rss')}</strong>
+			<UnorderedList>
+				{#each $locales as loc}
+					<ListItem>
+						<Link href={hrefConvert(loc, '/rss.xml')}>{$t(`langs.${loc}`)}</Link>
+					</ListItem>
+				{/each}
 			</UnorderedList>
 		</Column>
 		<Column>

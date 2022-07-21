@@ -19,7 +19,8 @@
 		"openSourceLicenses": "Open Source Licenses",
 		"repository": "Repository",
 		"socialMedia": "Social Media and contact",
-		"sourceCode": "Source Code"
+		"sourceCode": "Source Code",
+		"rss": "RSS feeds"
 	},
 	"licenses": {
 		"openSourceLicenses": "Open Source Licenses",
