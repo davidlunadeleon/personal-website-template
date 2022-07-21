@@ -4,7 +4,9 @@ interface SocialMedia {
 }
 
 export interface SiteConfig {
+	baseURL: string;
+	description: string;
 	name: string;
-	sourceRepository: string;
 	socialMedia: SocialMedia[];
+	sourceRepository: string;
 }
