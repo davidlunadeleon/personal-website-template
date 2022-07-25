@@ -1,3 +1,3 @@
 export function match(param: string): boolean {
-	return /^[\p{L}\p{Nd}_]+$/u.test(param);
+	return /^[\p{L}\p{Nd}_\- ]+$/u.test(param);
 }
