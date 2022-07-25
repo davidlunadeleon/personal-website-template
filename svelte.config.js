@@ -2,6 +2,7 @@ import adapter from '@sveltejs/adapter-static';
 import preprocess from 'svelte-preprocess';
 import { optimizeImports } from 'carbon-preprocess-svelte';
 import { mdsvex } from 'mdsvex';
+import remarkFootnotes from 'remark-footnotes';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -11,7 +12,8 @@ const config = {
 		preprocess(),
 		optimizeImports(),
 		mdsvex({
-			layout: './src/lib/layouts/default.svelte'
+			layout: './src/lib/layouts/default.svelte',
+			remarkPlugins: [remarkFootnotes]
 		})
 	],
 	extensions: ['.svelte', '.svx'],
