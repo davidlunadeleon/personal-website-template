@@ -7,13 +7,12 @@
 		SideNav,
 		SideNavItems,
 		SideNavLink,
-		SideNavMenu,
-		SideNavMenuItem,
 		SkipToContent
 	} from 'carbon-components-svelte';
 	import { config } from '$lib/config/site';
 	import ThemePicker from '$lib/components/ThemePicker.svelte';
-	import LanguagePicker from './LanguagePicker.svelte';
+	import TopLanguagePicker from './TopLanguagePicker.svelte';
+	import SideNavLanguagePicker from './SideNavLanguagePicker.svelte';
 	import { t, locale, locales } from 'svelte-intl-precompile';
 
 	let isSideNavOpen = false;
@@ -41,7 +40,7 @@
 		{#each items as item}
 			<HeaderNavItem {...item} />
 		{/each}
-		<LanguagePicker />
+		<TopLanguagePicker />
 		<ThemePicker />
 	</HeaderNav>
 	<SideNav bind:isOpen={isSideNavOpen}>
@@ -49,11 +48,7 @@
 			{#each items as item}
 				<SideNavLink {...item} />
 			{/each}
-			<SideNavMenu text={$t('navBar.language')}>
-				{#each $locales as loc}
-					<SideNavMenuItem text={$t(`langs.${loc}`)} on:click={() => ($locale = loc)} />
-				{/each}
-			</SideNavMenu>
+			<SideNavLanguagePicker />
 			<ThemePicker />
 		</SideNavItems>
 	</SideNav>
